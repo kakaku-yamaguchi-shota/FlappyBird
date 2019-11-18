@@ -82,8 +82,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
 
-        if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory
-            || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory {
+        let categoryBitMaskA = contact.bodyA.categoryBitMask
+        let categoryBitMaskB = contact.bodyB.categoryBitMask
+
+        if (categoryBitMaskA & scoreCategory) == scoreCategory
+            || (categoryBitMaskB & scoreCategory) == scoreCategory {
             // スコア用の物体と衝突した
             print("ScoreUp")
             score += 1
@@ -97,15 +100,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 userDefaults.set(bestScore, forKey: BEST_SCORE_KEY)
                 userDefaults.synchronize()
             }
-        } else if (contact.bodyA.categoryBitMask & itemScoreCategory) == itemScoreCategory
-            || (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
+        } else if (categoryBitMaskA & itemScoreCategory) == itemScoreCategory
+            || (categoryBitMaskB & itemScoreCategory) == itemScoreCategory {
             // itemスコア用の物体と衝突した
             print("ItemScoreUp")
             // アイテムゲット音を出して、アイテムを削除
-            var items = itemNode.children as [SKNode]
-            let item = items[0]
+            let itemScoreNode = (categoryBitMaskA & itemScoreCategory) == itemScoreCategory ? contact.bodyA.node! : contact.bodyB.node!
             itemSound.run(SKAction.play())
-            item.removeFromParent()
+            itemScoreNode.parent?.removeFromParent()
             // アイテムスコア
             itemScore += 1
             itemScoreLabelNode.text = "ItemScore:\(itemScore)"
