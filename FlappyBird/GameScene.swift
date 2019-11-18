@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var wallNode:SKNode!
     var bird:SKSpriteNode!
     var itemNode:SKNode!
+    var itemSound:SKAudioNode!
 
     // 衝突判定カテゴリー
     let birdCategory: UInt32 = 1 << 0    // 0...00001
@@ -56,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupWall()
         setupItem()
         setupBird()
+        setupSound()
 
         setupScoreLabel()
         setupItemScoreLabel()
@@ -99,10 +101,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             || (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
             // itemスコア用の物体と衝突した
             print("ItemScoreUp")
-            // 衝突したアイテムを削除
+            // アイテムゲット音を出して、アイテムを削除
             var items = itemNode.children as [SKNode]
-            print(items[0])
-            items[0].removeFromParent()
+            let item = items[0]
+            itemSound.run(SKAction.play())
+            item.removeFromParent()
             // アイテムスコア
             itemScore += 1
             itemScoreLabelNode.text = "ItemScore:\(itemScore)"
@@ -220,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.frame.size.width + itemTexture.size().width)
         // 画面外まで移動するアクション
         let moveItem = SKAction.moveBy(
-            x: -movingDistance, y: 0, duration: 5)
+            x: -movingDistance, y: 0, duration: 4.5)
         // 自身を取り除くアクション
         let removeItem = SKAction.removeFromParent()
         // 上記アニメーションを順に実行
@@ -395,6 +398,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bird.run(flap)
         // スプライト追加
         addChild(bird)
+    }
+
+    func setupSound() {
+        let sound = SKAudioNode(fileNamed: "itemGet.mp3")
+        sound.autoplayLooped = false
+        itemSound = sound
+        self.addChild(itemSound)
     }
 
     func setupScoreLabel() {

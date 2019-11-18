@@ -13,6 +13,7 @@
 		3EC88B7C237A342200B55746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC88B7B237A342200B55746 /* Assets.xcassets */; };
 		3EC88B7F237A342200B55746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC88B7D237A342200B55746 /* LaunchScreen.storyboard */; };
 		3EC88B87237A385100B55746 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC88B86237A385100B55746 /* GameScene.swift */; };
+		3EC88B89237ED1A500B55746 /* itemGet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3EC88B88237ED1A500B55746 /* itemGet.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3EC88B7E237A342200B55746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EC88B80237A342200B55746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EC88B86237A385100B55746 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3EC88B88237ED1A500B55746 /* itemGet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itemGet.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				3EC88B74237A342000B55746 /* AppDelegate.swift */,
 				3EC88B76237A342000B55746 /* ViewController.swift */,
+				3EC88B88237ED1A500B55746 /* itemGet.mp3 */,
 				3EC88B78237A342000B55746 /* Main.storyboard */,
 				3EC88B7B237A342200B55746 /* Assets.xcassets */,
 				3EC88B7D237A342200B55746 /* LaunchScreen.storyboard */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC88B89237ED1A500B55746 /* itemGet.mp3 in Resources */,
 				3EC88B7F237A342200B55746 /* LaunchScreen.storyboard in Resources */,
 				3EC88B7C237A342200B55746 /* Assets.xcassets in Resources */,
 				3EC88B7A237A342000B55746 /* Main.storyboard in Resources */,
